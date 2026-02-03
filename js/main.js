@@ -152,7 +152,7 @@
   
             const poster = clone.querySelector(".movie-poster");
             poster.src =
-              posterImageMap[results.title] || "images/poster-placeholder.jpg";
+              posterImageMap[results.title];
             poster.alt = results.title;
   
             movieContainer.appendChild(clone);
