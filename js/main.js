@@ -40,10 +40,9 @@
       "Revenge of the Sith": "images/revenge-of-the-sith.jpg",
     };
   
-    // I keep all characters here so I don’t refetch
+
     let allCharacters = [];
   
-    // I count how many movies still loading
     let moviesToLoad = 0;
   
     // I show the loading spinner
@@ -247,6 +246,48 @@
       link.addEventListener("click", handleNavClick);
     });
   
-    getCharacters();
-  })();
-  
+  // I animate the page intro content on load
+  function animatePageIntro() {
+    gsap.from(".section-header h2", {
+      y: 40,
+      opacity: 0,
+      duration: 0.9,
+      stagger: 0.15,
+      ease: "power2.out",
+    });
+
+    gsap.from(".search-form", {
+      y: 20,
+      opacity: 0,
+      duration: 0.8,
+      delay: 0.3,
+      ease: "power2.out",
+    });
+
+    gsap.from(".main-nav li", {
+      y: -20,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.1,
+      delay: 0.2,
+      ease: "power2.out",
+    });
+  }
+
+  // I animate character cards after they render
+  function animateCharacterCards() {
+    gsap.from(".character-card", {
+      y: 40,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.08,
+      ease: "power2.out",
+      clearProps: "all",
+    });
+  }
+
+  // I initialize the application
+  getCharacters();
+  animatePageIntro();
+
+})();
